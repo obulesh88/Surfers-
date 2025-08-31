@@ -1,51 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>Subway Surfers</title>
-  <link rel="stylesheet" href="../webgl.css" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Runner Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Hide scrollbars */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #2c2c2c; /* Dark background */
+        }
+        canvas {
+            border: 2px solid #fff; /* White border for visibility */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glow effect */
+        }
+        #game-container {
+            text-align: center;
+        }
+        #game-title {
+            color: #fff;
+            font-size: 3em;
+            font-family: 'Arial', sans-serif; /* Choose a font that fits */
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff, 0 0 15px #00aaff; /* Neon glow */
+        }
+        #score-display {
+            color: #fff;
+            font-size: 1.5em;
+            font-family: 'Arial', sans-serif;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-
 <body>
-  <div id="wrapper" align="center" style="margin-left:auto; margin-right:auto;">
-    <h1 id="heading"
-      style="background-color: #a59e9a; text-decoration-style: solid; color: #F8F8F8; width: 40%; margin-top: 0px; margin-bottom: 10px; text-align: center;">
-      Subway Surfers</h1>
-    <div id="maze">
-      <div id="c"
-        style="margin-left:auto; margin-right:auto;margin-bottom: 10px;text-align: center;width: 10%;font-size: large">
-      </div>
 
-      <canvas id="glcanvas" width="1280" height="720" style="margin-left:auto; margin-right:auto">This text is displayed
-        if your browser does not support HTML5 Canvas.</canvas>
-      <div id="timerel"
-        style="margin-left:auto; margin-right:auto;margin-top:0px;text-align: center;width: 15%;font-size: large"></div>
-      <div>
-        <audio src='./assets/Theme.mp3' id="music" loop></audio>
-        <audio src='./assets//Crash.mp3' id="crash"></audio>
-      </div>
+    <div id="game-container">
+        <h1 id="game-title">Endless Runner</h1>
+        <canvas id="gameCanvas" width="960" height="540"></canvas>
+        <div id="score-display">Score: 0</div>
     </div>
+
+    <!-- Audio elements -->
+    <!-- Paths adjusted: assuming files are in the root directory -->
+    <audio id="backgroundMusic" src="./Theme.mp3" loop></audio>
+    <audio id="crashSound" src="./Crash.mp3"></audio>
+
+    <!-- JavaScript files -->
+    <!-- Paths adjusted: assuming all JS files are in the root directory -->
+    <script src="./gl-matrix.js"></script>
+    <script src="./player.js"></script>
+    <script src="./police.js"></script>
+    <script src="./dog.js"></script>
+    <script src="./coin.js"></script>
+    <script src="./train.js"></script>
+    <script src="./box.js"></script>
+    <script src="./manhole.js"></script>
+    <script src="./stop.js"></script>
+    <script src="./stand.js"></script>
+    <script src="./boots.js"></script>
+    <script src="./flying_boost.js"></script>
+    <script src="./hoverboard.js"></script>
+    <script src="./track.js"></script>
+    <script src="./wall.js"></script>
+    <script src="./city.js"></script>
+    <script src="./handlekeys.js"></script>
+    <script src="./main.js"></script>
+
+    <!--
+        NOTE on Images:
+        Images (.jpg files) are typically loaded and managed within your JavaScript files.
+        You do NOT directly link images in HTML like you do with scripts or audio
+        unless you are just displaying them statically without game logic.
+
+        In your JavaScript (e.g., in main.js or a dedicated loader script),
+        you would do something like this to load an image:
+
+        const playerSprite = new Image();
+        playerSprite.src = './player.jpg'; // Adjust path if necessary
+        playerSprite.onload = () => {
+            // Image is loaded, now you can use it in your game
+            console.log('Player sprite loaded!');
+        };
+
+        Similarly for other images like:
+        const coinSprite = new Image();
+        coinSprite.src = './coin.jpg';
+
+        And so on for all your image assets.
+    -->
+
 </body>
-
-<script src="./gl-matrix.js"></script>
-<script src="./cube.js"></script>
-<script src="./track.js"></script>
-<script src="./wall.js"></script>
-<script src="./city.js"></script>
-<script src="./handlekeys.js"></script>
-<script src="./player.js"></script>
-<script src="./police.js"></script>
-<script src="./dog.js"></script>
-<script src="./coin.js"></script>
-<script src="./train.js"></script>
-<script src="./box.js"></script>
-<script src="./manhole.js"></script>
-<script src="./stop.js"></script>
-<script src="./stand.js"></script>
-<script src="./boots.js"></script>
-<script src="./flying_boost.js"></script>
-<script src="./hoverboard.js"></script>
-<script src="./main.js"></script>
-
 </html>
